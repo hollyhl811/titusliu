@@ -325,8 +325,6 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
-    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
-    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
   }
 
   .clients-row {
@@ -1663,7 +1661,7 @@ function render(lang) {
   (function () {
     const wall = d.clientWall;
     const rows = 4;
-    const durations = [62, 78, 56, 70];
+    const durations = [110, 135, 95, 120];
     const container = document.getElementById("clients-grid");
     const html = Array.from({ length: rows }, (_, idx) => {
       const offset = Math.floor((idx * wall.length) / rows);
