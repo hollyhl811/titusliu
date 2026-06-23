@@ -325,12 +325,16 @@
     display: flex;
     flex-direction: column;
     gap: 6px;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .clients-row {
     display: flex;
     overflow: hidden;
     white-space: nowrap;
+    min-width: 0;
+    max-width: 100%;
   }
 
   .clients-track {
@@ -625,6 +629,10 @@
     display: grid;
     grid-template-columns: 300px 1fr;
     gap: 60px;
+  }
+
+  main {
+    min-width: 0;
   }
 
   /* ============ Sidebar ============ */
