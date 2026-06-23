@@ -1,0 +1,1628 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>刘洋浦 (Titus Liu) — 税务科技与数字化转型专家</title>
+<style>
+  :root {
+    --bg-primary: #ffffff;
+    --bg-secondary: #f7f7f9;
+    --bg-card: #ffffff;
+    --bg-hero-from: #1d1d1f;
+    --bg-hero-to: #2c2c2e;
+    --border: #e5e5e7;
+    --border-strong: #d2d2d7;
+    --text-primary: #1d1d1f;
+    --text-secondary: #515154;
+    --text-muted: #86868b;
+    --accent: #5a4a8c;
+    --accent-soft: #7c6cb0;
+    --shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    --shadow-hover: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --radius: 4px;
+    --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    --serif: "Source Han Serif SC", "Noto Serif SC", "Songti SC", "STSong", Georgia, "Times New Roman", serif;
+    --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    line-height: 1.75;
+    font-size: 15px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  html {
+    overflow-x: hidden;
+  }
+
+  /* ============ Top Bar ============ */
+  .topbar {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 14px 0;
+  }
+
+  .topbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .topbar-brand {
+    font-size: 13px;
+    color: var(--text-secondary);
+    letter-spacing: 0.12em;
+    font-weight: 500;
+    text-transform: uppercase;
+  }
+
+  .topbar-brand .dot {
+    color: var(--accent);
+    margin: 0 10px;
+  }
+
+  .lang-switch {
+    display: flex;
+    gap: 0;
+    background: var(--bg-secondary);
+    padding: 3px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+
+  .lang-switch button {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 5px 14px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: 500;
+    border-radius: 3px;
+    transition: var(--transition);
+    font-family: inherit;
+    letter-spacing: 0.05em;
+  }
+
+  .lang-switch button.active {
+    background: var(--text-primary);
+    color: #fff;
+  }
+
+  .lang-switch button:not(.active):hover {
+    color: var(--text-primary);
+  }
+
+  /* ============ Topbar Nav & Print ============ */
+  .topbar-nav {
+    display: flex;
+    gap: 28px;
+  }
+
+  .topbar-nav-link {
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    transition: var(--transition);
+    position: relative;
+    padding: 4px 0;
+  }
+
+  .topbar-nav-link::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .topbar-nav-link:hover {
+    color: var(--text-primary);
+  }
+
+  .topbar-nav-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .print-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    padding: 6px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 11px;
+    font-family: inherit;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    transition: var(--transition);
+  }
+
+  .print-btn:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+  }
+
+  .print-btn svg {
+    width: 12px;
+    height: 12px;
+    stroke: currentColor;
+    fill: none;
+  }
+
+  /* ============ Hero Current Role & Highlight Bar ============ */
+  .hero-current-role {
+    font-size: 13px;
+    color: #c9bfe0;
+    margin-bottom: 16px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    position: relative;
+  }
+
+  .highlight-bar {
+    margin-top: 40px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    position: relative;
+  }
+
+  .highlight-item {
+    padding: 22px 20px;
+    border-right: 1px solid rgba(255, 255, 255, 0.12);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  }
+
+  .highlight-number {
+    font-family: var(--serif);
+    font-size: 32px;
+    font-weight: 600;
+    color: #ffffff;
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .highlight-label {
+    font-size: 10px;
+    color: #aeaeb2;
+    margin-top: 8px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.4;
+  }
+
+  /* ============ Signature Project ============ */
+  .signature-project {
+    background: var(--bg-secondary);
+    border-left: 2px solid var(--accent);
+    padding: 26px 30px;
+    position: relative;
+  }
+
+  .signature-tag {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+
+  .signature-title {
+    font-family: var(--serif);
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    line-height: 1.4;
+    letter-spacing: -0.005em;
+  }
+
+  .signature-desc {
+    font-size: 14px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 12px;
+  }
+
+  .signature-meta {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  /* ============ Skill Groups ============ */
+  .skill-group {
+    margin-bottom: 18px;
+  }
+
+  .skill-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .skill-group-title {
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .skill-group-items {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  /* ============ Clients Section (static, wrapped) ============ */
+  .clients-section {
+    margin-top: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+  }
+
+  .clients-label {
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-align: center;
+    padding: 24px 0 0;
+  }
+
+  .clients-list {
+    padding: 24px 32px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 14px 0;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .client-item {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 0 26px;
+    position: relative;
+    transition: color 0.25s ease;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+  }
+
+  .client-item:not(:last-child)::after {
+    content: "·";
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-52%);
+    color: var(--accent);
+    opacity: 0.45;
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .client-item:hover {
+    color: var(--accent);
+  }
+
+  @media (max-width: 880px) {
+    .client-item {
+      font-size: 17px;
+      padding: 0 16px;
+    }
+    .client-item:not(:last-child)::after {
+      font-size: 17px;
+    }
+    .clients-list {
+      padding: 20px 16px 24px;
+      gap: 10px 0;
+    }
+  }
+
+  /* ============ Print ============ */
+  @media print {
+    .topbar, .topbar-nav, .print-btn, .lang-switch, .topbar-actions {
+      display: none !important;
+    }
+    body {
+      background: #ffffff;
+      color: #000000;
+      font-size: 10pt;
+    }
+    .hero {
+      background: #ffffff !important;
+      color: #000000 !important;
+      padding: 0 0 16px 0;
+      margin: 0;
+      border-bottom: 1.5px solid #000000;
+      max-width: none;
+    }
+    .hero::before, .hero::after { display: none; }
+    .hero-name, .hero-title, .hero-current-role {
+      color: #000000 !important;
+    }
+    .hero-name .en {
+      color: #555555 !important;
+    }
+    .hero-divider {
+      background: #5a4a8c;
+    }
+    .hero-subtitle, .hero-contact a, .hero-contact span {
+      color: #333333 !important;
+    }
+    .hero-contact svg { stroke: #5a4a8c !important; }
+    .highlight-bar {
+      border-color: #999999 !important;
+    }
+    .highlight-item {
+      border-color: #999999 !important;
+    }
+    .highlight-number {
+      color: #000000 !important;
+    }
+    .highlight-label {
+      color: #555555 !important;
+    }
+    .layout {
+      grid-template-columns: 1fr 2fr;
+      gap: 20px;
+      padding: 16px 0;
+      max-width: none;
+    }
+    .sidebar {
+      position: static;
+    }
+    .signature-project, .summary-card, .clients-section {
+      background: #ffffff !important;
+      border-color: #cccccc !important;
+      box-shadow: none !important;
+    }
+    .client-item {
+      font-size: 13pt !important;
+      color: #222222 !important;
+      padding: 0 18px !important;
+    }
+    .client-item:not(:last-child)::after {
+      color: #5a4a8c !important;
+    }
+    .project-card, .achievement-card, .achievement-list-item, .experience-item {
+      break-inside: avoid;
+      box-shadow: none !important;
+    }
+    .signature-title, .experience-company, .achievement-number, .highlight-number {
+      color: #000000 !important;
+    }
+    footer {
+      border-top: 1px solid #cccccc;
+      color: #555555;
+      padding: 16px 0;
+    }
+    a[href]:after {
+      content: "";
+    }
+    .project-card:hover, .client-item:hover, .achievement-card:hover {
+      background: transparent !important;
+      transform: none !important;
+      color: inherit !important;
+    }
+  }
+
+  /* Responsive — small screens */
+  @media (max-width: 880px) {
+    .topbar-nav {
+      display: none;
+    }
+    .highlight-bar {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  /* ============ Hero ============ */
+  .hero {
+    background: linear-gradient(135deg, var(--bg-hero-from) 0%, var(--bg-hero-to) 100%);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 90px 40px 70px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-name {
+    font-family: var(--serif);
+    font-size: 56px;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    margin-bottom: 6px;
+    position: relative;
+    line-height: 1.2;
+  }
+
+  .hero-name .en {
+    color: #aeaeb2;
+    font-weight: 400;
+    font-size: 22px;
+    margin-left: 14px;
+    letter-spacing: 0.02em;
+    font-style: italic;
+  }
+
+  .hero-divider {
+    width: 60px;
+    height: 2px;
+    background: var(--accent);
+    margin: 18px 0 22px;
+  }
+
+  .hero-title {
+    font-size: 19px;
+    color: #f5f5f7;
+    font-weight: 400;
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+    position: relative;
+  }
+
+  .hero-subtitle {
+    font-size: 13px;
+    color: #aeaeb2;
+    margin-bottom: 32px;
+    letter-spacing: 0.06em;
+    position: relative;
+    text-transform: uppercase;
+  }
+
+  .hero-contact {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 28px;
+    font-size: 14px;
+    position: relative;
+  }
+
+  .hero-contact a,
+  .hero-contact span {
+    color: #d1d1d6;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: var(--transition);
+  }
+
+  .hero-contact a:hover {
+    color: #ffffff;
+  }
+
+  .hero-contact svg {
+    width: 13px;
+    height: 13px;
+    stroke: var(--accent);
+  }
+
+  /* ============ Layout ============ */
+  .layout {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 40px 80px;
+    display: grid;
+    grid-template-columns: 300px 1fr;
+    gap: 60px;
+  }
+
+  /* ============ Sidebar ============ */
+  .sidebar {
+    position: sticky;
+    top: 90px;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+  }
+
+  /* ============ Sections ============ */
+  .section-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-title-main {
+    font-family: var(--serif);
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 28px;
+    letter-spacing: -0.005em;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-title-main::before {
+    content: "";
+    width: 3px;
+    height: 20px;
+    background: var(--accent);
+  }
+
+  /* ============ Skills Tags ============ */
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  .skill-tag {
+    font-size: 12px;
+    padding: 5px 11px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    color: var(--text-secondary);
+    border-radius: 3px;
+    transition: var(--transition);
+    font-weight: 400;
+    letter-spacing: 0.02em;
+  }
+
+  .skill-tag:hover {
+    border-color: var(--text-primary);
+    color: var(--text-primary);
+  }
+
+  /* ============ Info List (Education, Certs, Awards) ============ */
+  .info-item {
+    padding: 13px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .info-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .info-item:first-child {
+    padding-top: 0;
+  }
+
+  .info-item-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 3px;
+  }
+
+  .info-item-sub {
+    font-size: 12px;
+    color: var(--text-secondary);
+  }
+
+  .info-item-meta {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 2px;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+  }
+
+  /* ============ Summary Card ============ */
+  .summary-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--accent);
+    padding: 22px 26px;
+    border-radius: 0;
+    font-size: 14.5px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+    margin-bottom: 0;
+  }
+
+  /* ============ Experience Timeline ============ */
+  .experience-item {
+    position: relative;
+    padding: 0 0 40px 28px;
+    border-left: 1px solid var(--border-strong);
+  }
+
+  .experience-item:last-child {
+    padding-bottom: 0;
+    border-left: 1px solid transparent;
+  }
+
+  .experience-item::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 4px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--bg-primary);
+    border: 2px solid var(--accent);
+  }
+
+  .experience-item:last-child::before {
+    background: var(--accent);
+  }
+
+  .experience-period {
+    display: inline-block;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    margin-bottom: 8px;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .experience-company {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+    letter-spacing: -0.005em;
+  }
+
+  .experience-meta {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-bottom: 6px;
+    letter-spacing: 0.03em;
+  }
+
+  .experience-role {
+    font-size: 13px;
+    color: var(--accent);
+    font-weight: 500;
+    margin-bottom: 14px;
+    font-style: italic;
+    letter-spacing: 0.01em;
+  }
+
+  .experience-bullets li {
+    list-style: none;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    margin-bottom: 7px;
+    padding-left: 16px;
+    position: relative;
+    line-height: 1.75;
+  }
+
+  .experience-bullets li::before {
+    content: "—";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--text-muted);
+    font-size: 12px;
+  }
+
+  /* ============ Project Cards ============ */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0;
+    margin-bottom: 24px;
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+  }
+
+  .project-card {
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 24px 26px;
+    border-radius: 0;
+    transition: var(--transition);
+  }
+
+  .project-card:hover {
+    background: var(--bg-secondary);
+  }
+
+  .project-name {
+    font-family: var(--serif);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+  }
+
+  .project-role {
+    font-size: 11px;
+    color: var(--accent);
+    margin-bottom: 12px;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .project-desc {
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  .other-clients {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    padding: 20px 24px;
+    border-radius: 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+    line-height: 1.85;
+  }
+
+  .other-clients strong {
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 11px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+
+  /* ============ Achievements ============ */
+  .achievement-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    margin-bottom: 24px;
+    border-top: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+  }
+
+  .achievement-card {
+    background: var(--bg-card);
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 28px 20px;
+    border-radius: 0;
+    text-align: center;
+    transition: var(--transition);
+  }
+
+  .achievement-card:hover {
+    background: var(--bg-secondary);
+  }
+
+  .achievement-number {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+
+  .achievement-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    margin-top: 8px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .achievement-list-item {
+    padding: 14px 20px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-left: 2px solid var(--accent);
+    margin-bottom: 6px;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+    border-radius: 0;
+  }
+
+  .achievement-list-item strong {
+    color: var(--text-primary);
+    font-weight: 600;
+  }
+
+  /* ============ Footer ============ */
+  footer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 36px 40px 60px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text-muted);
+    text-align: center;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  /* ============ Responsive ============ */
+  @media (max-width: 980px) {
+    .layout {
+      grid-template-columns: 1fr;
+      gap: 50px;
+      padding: 40px 24px 60px;
+    }
+    .sidebar {
+      position: static;
+    }
+    .hero {
+      padding: 60px 24px 50px;
+    }
+    .hero-name {
+      font-size: 38px;
+    }
+    .hero-name .en {
+      font-size: 18px;
+      display: block;
+      margin-left: 0;
+      margin-top: 6px;
+    }
+    .projects-grid,
+    .achievement-grid {
+      grid-template-columns: 1fr;
+    }
+    .topbar-inner,
+    footer {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .hero-name {
+      font-size: 32px;
+    }
+    .hero-contact {
+      gap: 16px;
+      font-size: 13px;
+    }
+    .section-title-main {
+      font-size: 20px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <div class="topbar-brand">
+      <span id="brand-name">刘洋浦</span>
+      <span class="dot">·</span>
+      <span id="brand-title">税务科技</span>
+    </div>
+    <nav class="topbar-nav" id="topbar-nav"></nav>
+    <div class="topbar-actions">
+      <button class="print-btn" id="print-btn" type="button" aria-label="Print">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/>
+        </svg>
+        <span id="nav-print">打印 / PDF</span>
+      </button>
+      <div class="lang-switch">
+        <button data-lang="zh" class="active">中</button>
+        <button data-lang="en">EN</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<section class="hero">
+  <h1 class="hero-name">
+    <span id="hero-name-zh">刘洋浦</span>
+    <span class="en" id="hero-name-en">Titus Liu</span>
+  </h1>
+  <div class="hero-divider"></div>
+  <p class="hero-current-role" id="hero-current-role">现任 · 联想集团 SSG / LPS 项目总监</p>
+  <p class="hero-title" id="hero-title">税务科技与数字化转型专家</p>
+  <p class="hero-subtitle" id="hero-subtitle">11年经验 · PMP认证 · 四大+本土咨询背景 · 北京</p>
+  <div class="hero-contact">
+    <span>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+      </svg>
+      <span id="contact-location">北京，中国</span>
+    </span>
+    <a href="tel:+8618612211116">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      <span id="contact-phone">+86 186-1221-1116</span>
+    </a>
+    <a href="mailto:845026666@qq.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+      </svg>
+      <span id="contact-email">845026666@qq.com</span>
+    </a>
+  </div>
+  <div class="highlight-bar" id="highlight-bar"></div>
+</section>
+
+<div class="layout">
+  <aside class="sidebar">
+    <div>
+      <div class="section-title" id="title-skills">核心能力</div>
+      <div id="skill-groups-container"></div>
+    </div>
+    <div>
+      <div class="section-title" id="title-education">教育背景</div>
+      <div id="education-container"></div>
+    </div>
+    <div>
+      <div class="section-title" id="title-certs">认证与培训</div>
+      <div id="certs-container"></div>
+    </div>
+    <div>
+      <div class="section-title" id="title-awards">奖项荣誉</div>
+      <div id="awards-container"></div>
+    </div>
+  </aside>
+
+  <main>
+    <section class="signature-project" id="signature">
+      <div class="signature-tag" id="signature-tag">标志性项目</div>
+      <h3 class="signature-title" id="signature-title"></h3>
+      <p class="signature-desc" id="signature-desc"></p>
+      <p class="signature-meta" id="signature-meta"></p>
+    </section>
+
+    <section id="summary" style="margin-bottom: 40px; margin-top: 40px;">
+      <h2 class="section-title-main" id="title-summary">个人简介</h2>
+      <div class="summary-card" id="summary-content"></div>
+    </section>
+
+    <section id="experience" style="margin-bottom: 40px;">
+      <h2 class="section-title-main" id="title-experience">工作经验</h2>
+      <div id="experience-container"></div>
+    </section>
+
+    <section id="projects" style="margin-bottom: 40px;">
+      <h2 class="section-title-main" id="title-projects">代表项目</h2>
+      <div class="projects-grid" id="projects-container"></div>
+      <div class="clients-section">
+        <div class="clients-label" id="other-clients-title">服务客户矩阵</div>
+        <div class="clients-list" id="clients-grid"></div>
+      </div>
+    </section>
+
+    <section id="achievements" style="margin-bottom: 40px;">
+      <h2 class="section-title-main" id="title-achievements">主要业绩</h2>
+      <div class="achievement-grid" id="achievement-grid"></div>
+      <div id="achievement-list"></div>
+    </section>
+
+    <section>
+      <h2 class="section-title-main" id="title-objective">求职意向</h2>
+      <div class="summary-card" id="objective-content"></div>
+    </section>
+  </main>
+</div>
+
+<footer>
+  <span id="footer-text">© 2026 刘洋浦 (Titus Liu) · 税务科技与数字化转型专家</span>
+</footer>
+
+<script>
+const DATA = {
+  zh: {
+    brandName: "刘洋浦",
+    brandTitle: "税务科技",
+    heroNameZh: "刘洋浦",
+    heroNameEn: "Titus Liu",
+    heroCurrentRole: "现任 · 联想集团 SSG / LPS 项目总监",
+    heroTitle: "税务科技与数字化转型专家",
+    heroSubtitle: "11年经验 · PMP认证 · 四大+本土咨询背景 · 北京",
+    contactLocation: "北京，中国",
+    contactPhone: "+86 186-1221-1116",
+    contactEmail: "845026666@qq.com",
+    footerText: "© 2026 刘洋浦 (Titus Liu) · 税务科技与数字化转型专家",
+
+    navItems: [
+      { id: "summary", label: "简介" },
+      { id: "experience", label: "经验" },
+      { id: "projects", label: "项目" },
+      { id: "achievements", label: "业绩" }
+    ],
+    navPrint: "打印 / PDF",
+
+    highlights: [
+      { number: "70+", label: "主导税务数字化项目" },
+      { number: "11", label: "年税务科技经验" },
+      { number: "6", label: "段顶级咨询/央企经历" },
+      { number: "1", label: "项国家级示范案例奖" }
+    ],
+
+    titleSkills: "核心能力",
+    titleEducation: "教育背景",
+    titleCerts: "认证与培训",
+    titleAwards: "奖项荣誉",
+    titleObjective: "求职意向",
+    titleSummary: "个人简介",
+    titleSignature: "标志性项目",
+    titleExperience: "工作经验",
+    titleProjects: "代表项目",
+    titleAchievements: "主要业绩",
+    otherClientsTitle: "服务客户矩阵",
+
+    skillGroups: [
+      {
+        title: "战略与业务",
+        items: ["税务数字化转型", "政府与监管事务", "央国企客户管理", "售前与业务拓展"]
+      },
+      {
+        title: "交付与管理",
+        items: ["项目与项目集管理（PMP）", "全生命周期交付", "10人以上团队管理", "跨职能协调"]
+      },
+      {
+        title: "领域与技术",
+        items: ["金税四期与数电发票", "间接税/直接税系统", "支柱二（PL2）合规", "RPA与AI税务咨询"]
+      }
+    ],
+
+    signatureProject: {
+      tag: "标志性项目",
+      title: "全电发票产品 · 2021 CIFTIS 国家级奖项",
+      desc: "主导设计的全电发票（Full Electronic Invoice）产品，荣获 2021 年中国国际服务贸易交易会「业态创新服务示范案例」奖。德勤中国任职期间出品，是国家级数字税务基础设施的代表案例之一。",
+      meta: "德勤中国 · 2019–2023"
+    },
+
+    clientWall: [
+      "中金公司", "辽沈银行", "国药集团", "Rolls Royce 中国",
+      "中信证券", "海通证券", "国泰君安", "中信建投",
+      "东亚证券", "兴业证券", "联想金融", "长虹电器",
+      "兴港集团", "港华燃气", "歌华有线", "九坤投资",
+      "联通集团", "平安集团", "平安银行", "中国铁塔",
+      "中银国际"
+    ],
+
+    education: [
+      { title: "大连东软学院", sub: "电子工程系 · 工程学士学位" }
+    ],
+
+    certs: [
+      { title: "PMP 项目管理专业人士认证", sub: "PMI" },
+      { title: "ICM 风险内控师（高级）培训", sub: "Internal Control Management" },
+      { title: "阿里云培训", sub: "Alibaba Cloud" }
+    ],
+
+    awards: [
+      { title: "CIFTIS 业态创新服务示范案例奖", sub: "2021 · 中国国际服务贸易交易会" },
+      { title: "年度优秀员工", sub: "2015 / 2016 / 2017 · 航天信息" },
+      { title: "FY25/26 年度评分 Strong", sub: "联想集团" }
+    ],
+
+    objective: "谋求国有企业、税务科技服务商或大型企业税务部门的高级项目经理 / 项目总监岗位（间接税/直接税信息化系统方向），运用 11 年四大与本土咨询经验、70+ 税务数字化项目全生命周期交付经验、PMP 认证以及与税务总局各级处室及央国企客户的稳定合作关系，推动金税四期、数电发票、乐企及支柱二等关键税务数字化项目落地。",
+
+    summary: "税务科技与数字化转型资深专家，拥有 11 年央国企、大型企业及国际四大咨询公司经验。作为项目总监 / 项目经理主导 70+ 税务系统实施项目，具备 10 人以上团队管理经验。专长涵盖金税四期、数电发票、间接税 / 直接税数字化、支柱二（PL2）合规、RPA 智能机器人及 AI 税务咨询。具备从售前、方案蓝图设计、项目交付到售后运维的全生命周期管理经验，与税务总局大企业司、稽查、数风、货劳、电税等处室及大型央国企客户保持长期合作关系。PMP 认证，FY25/26 年度评分 Strong。",
+
+    experiences: [
+      {
+        period: "2025 — 至今",
+        company: "联想集团（中国）· SSG / LPS（B8）",
+        meta: "北京",
+        role: "间接税数字化项目负责人 & 交付项目总监（PD）",
+        bullets: [
+          "主导大中华区央国企、制造业、能源客户及大型跨国外资制造业客户间接税咨询与数字化全生命周期管理，负责方案介绍、需求细化与重点模块 demo 演示。",
+          "主导中区间接税 / 直接税数字化项目商机触达、售前交流与产品 demo 演示。",
+          "主导中大型企业间接税与直接税数字化建设实施，覆盖智能算税、AI 税务智能咨询、智能风控、PL2 支柱二、财税一体化、RPA 智能机器人、数电与乐企前置、全税申报、风控 dashboard 等模块。",
+          "带领 5–8 人以上团队完成全生命周期交付：需求调研与方案蓝图设计、BA 与开发测试 UAT 计划、项目进展跟进与汇报、开发任务排期、成本核算、跨部门沟通、运维对接（含低代码平台承接与知识转移）、上线后持续需求挖掘。",
+          "对接总局纳服、大企业司、稽查、数风、货劳、电税等处室，完成 AI 大模型方案制定、风险模型搭建、金四大企业稽查业务与数字化手段的推进与触达，实现公司与局端业务与技术的融合与协同。",
+          "负责外资与中资跨国企业新业务拓展，包括支柱二等服务的全球跨国集团项目全生命周期管理（前期商务关系开拓、方案蓝图出具、后期关系维系）。"
+        ]
+      },
+      {
+        period: "2024 — 2025",
+        company: "中税税务师事务所",
+        meta: "北京",
+        role: "头部国央企间接税信息化实施项目总监",
+        bullets: [
+          "主导中大型企业间接税数字化建设实施，覆盖间接税智能算税模块、AI 税务智能咨询、TRA、RPA 智能机器人、数电与乐企、风控 dashboard 等模块。",
+          "对接总局大企业司、稽查等处室，推进风险模型搭建与金四大企业稽查业务的数字化落地，完成公司与局端业务与技术的融合协同。"
+        ]
+      },
+      {
+        period: "2023 — 2024",
+        company: "普华永道税务师事务所（上海）",
+        meta: "北京",
+        role: "间接税数字化经理 · 信息化项目管理 & 产品管理",
+        bullets: [
+          "为央国企、制造业、能源客户及大型跨国外资制造业客户介绍 PwC 税务科技产品，主导需求细化、demo 演示及项目技术部分实施交付。",
+          "带领 5 人以上团队完成全生命周期交付，包括需求调研、方案蓝图设计、BA 与开发测试 UAT 计划、项目进展跟进、开发任务排期、成本核算、运维对接（含低代码承接与知识转移）、上线后持续需求挖掘。",
+          "主责金四发票与数电产品及行业定制化产品设计。",
+          "主导智能风险控制与稽查指标模块设计；新版本数电与乐企功能层面的解读与文档输出。",
+          "负责发票模块产品层面新增数电配套功能的设计与客户定制化需求收集。"
+        ]
+      },
+      {
+        period: "2019 — 2023",
+        company: "德勤中国（Senior 4）",
+        meta: "北京",
+        role: "间接税系统实施项目经理 / 税务科技咨询顾问",
+        bullets: [
+          "为非独立性冲突客户提供德勤税务信息化系统产品介绍、需求细化、demo 演示、商务合同（业务约定书）签订及项目技术部分实施交付，实现项目全流程跟进交付完毕。",
+          "提供金税四期大数据稽查政策培训、全电发票全流程实操经验解读及配套软硬件实施方案咨询。",
+          "提供企业税务信息化建设、全税种申报管理、个税专项附加扣除自动化实现方式等咨询服务。",
+          "向客户介绍增值税及所得税系统功能模块，从业务发生角度梳理企业流程，将税务系统功能与客户痛点匹配。",
+          "基于 UIPATH & UIBOT 主导 RPA 流程自动化项目，覆盖金融、制造业等场景，量化效能分析与数字串联关系比对。"
+        ]
+      },
+      {
+        period: "2018 — 2019",
+        company: "安永（中国）企业咨询（Senior 2）",
+        meta: "北京",
+        role: "间接税数字化项目经理",
+        bullets: [
+          "为非独立性冲突客户提供安永间接税信息化系统产品介绍、需求细化、demo 演示、商务合同签订及项目技术部分实施交付，实现项目全流程跟进交付完毕。",
+          "设计并组织税务培训课程，覆盖土地增值税、环保税纳税申报表填写、出口退税热点、个税政策改革、海关转让价格审价等主流方向。",
+          "组织北京、天津、上海等区域针对性培训，针对不同行业组织专题培训，快速积累客户资源并衍生其他项目合作。"
+        ]
+      },
+      {
+        period: "2015 — 2018",
+        company: "航天信息股份有限公司",
+        meta: "北京",
+        role: "间接税项目经理 / 大区总监 / 金融业证券行业项目经理",
+        bullets: [
+          "前期业务：客户现场方案讲解、投标方案归纳制作、市场规划与动态汇报；与南方大区等 10 个服务单位建立合作关系；与用友、金丘、长亮、大贲等第三方公司建立合作。",
+          "中期实施交付：服务端程序部署、前端软件安装调试、实施文档编写、测试环境部署及验收、生产环境部署与系统上线、获取实施验收报告。",
+          "后期运维：售后产品运维、客户问题归纳解答、定期升级文档发放。",
+          "发票 / 间接税产品管理：操作手册制作、产品宣传、定版发布、定价、运维、指标任务承担、技术与业务部门对接协调。",
+          "大区总监：与东部及南部大区（广东、广西、深圳、厦门、海南、福建、湖南、上海、江苏、浙江、山东、青岛、宁波等）航天分子公司及合作伙伴建立合作；支持服务单位投标、组织大区会议、划分一二线城市指标。",
+          "金融业证券行业项目经理：服务中信证券、海通证券、国泰君安、申万宏源、兴业证券、中金、广发、民生、光大、中信建投、西部、华泰等 20 余家券商客户。"
+        ]
+      }
+    ],
+
+    projects: [
+      {
+        name: "日立中国（原 ABB 电网板块）",
+        role: "E-Invoice 系统项目经理",
+        desc: "负责中国区域 E-Invoice 系统建设，覆盖销项、数电、乐企、进项、Master Data 等模块；对接 SAP 完成发票号码至表头写入；对 AP 票据执行 OCR 与合规性校验；对验真和勾选认证完成的发票进行票账核对，减少税会差异。"
+      },
+      {
+        name: "锦州银行",
+        role: "企业税务系统项目经理",
+        desc: "一期建设企业税务系统，二期替换营改增时期销项与进项模块；对接行内核心系统获取交易数据实现业财税一体化；搭建增值税申报模块，自动生成主表及附表；建设企业内部税务法规管理系统，同步外部法规库并跟踪内部涉税事项立项。"
+      },
+      {
+        name: "海通期货总部",
+        role: "发票管理系统项目经理",
+        desc: "一期建设进项系统；二期规划全电发票进项端优化升级与销项模块建设，对接用友 NC6.5 完成 NC 端报销单据与税务系统发票信息流贯通，实现发票验真、报销单关联与数据回写、入账后勾选抵扣；三期完成发票连号预警弹窗与已提交发票明细导出等定制化改造。"
+      },
+      {
+        name: "光大证券总部",
+        role: "税务发票系统项目经理",
+        desc: "一期建设企业税务发票系统；二期规划全电发票进项端优化升级，实现总部与营业部申报数据自动生成；对接业务系统获取交易数据完成销项端发票开具管理；对接财务系统与第三方接口实现进项发票电子底账库专票数据同步与发票验真；三期完成全电发票额度管理与预警功能优化。"
+      }
+    ],
+
+    otherClients: "中金公司、辽沈银行、国药集团、Rolls Royce 中国、中信证券、海通证券、国泰君安证券、中信建投证券、东亚证券、兴业证券、联想金融、长虹电器、兴港集团、港华燃气、歌华有线、九坤投资、联通集团、平安集团、平安银行、中国铁塔、中银国际证券等。",
+
+    achievementStats: [
+      { number: "70+", label: "主导税务数字化项目" },
+      { number: "11", label: "年税务科技经验" },
+      { number: "6", label: "段顶级咨询 / 央企经历" }
+    ],
+
+    achievements: [
+      { company: "联想集团 LPS", count: "15 个主责项目" },
+      { company: "中税税务师事务所", count: "6 个主责项目" },
+      { company: "普华永道", count: "8 个主责项目" },
+      { company: "德勤中国", count: "16 个主责项目 · 全电产品获 2021 CIFTIS 业态创新服务示范案例奖" },
+      { company: "安永（中国）", count: "6 个主责项目" },
+      { company: "航天信息", count: "25 个主责项目" }
+    ]
+  },
+
+  en: {
+    brandName: "Titus Liu",
+    brandTitle: "Tax Technology",
+    heroNameZh: "Yangpu Liu",
+    heroNameEn: "Titus",
+    heroCurrentRole: "Current · Project Director, SSG / LPS, Lenovo Group",
+    heroTitle: "Tax Technology & Digital Transformation Leader",
+    heroSubtitle: "11 Years · PMP Certified · Big Four + Domestic Consulting · Beijing",
+    contactLocation: "Beijing, China",
+    contactPhone: "+86 186-1221-1116",
+    contactEmail: "845026666@qq.com",
+    footerText: "© 2026 Yangpu Liu (Titus) · Tax Technology & Digital Transformation Leader",
+
+    navItems: [
+      { id: "summary", label: "Profile" },
+      { id: "experience", label: "Experience" },
+      { id: "projects", label: "Projects" },
+      { id: "achievements", label: "Impact" }
+    ],
+    navPrint: "Print / PDF",
+
+    highlights: [
+      { number: "70+", label: "Tax Digital Projects Led" },
+      { number: "11", label: "Years in Tax Technology" },
+      { number: "6", label: "Big Four / SOE Tenures" },
+      { number: "1", label: "National Demonstration Award" }
+    ],
+
+    titleSkills: "Core Competencies",
+    titleEducation: "Education",
+    titleCerts: "Certifications & Training",
+    titleAwards: "Awards & Honors",
+    titleObjective: "Career Objective",
+    titleSummary: "Professional Summary",
+    titleSignature: "Signature Project",
+    titleExperience: "Professional Experience",
+    titleProjects: "Selected Projects",
+    titleAchievements: "Key Achievements",
+    otherClientsTitle: "Client Portfolio",
+
+    skillGroups: [
+      {
+        title: "Strategy & Business",
+        items: ["Tax Digital Transformation", "Government & Regulatory Affairs", "SOE Client Management", "Pre-Sales & Business Development"]
+      },
+      {
+        title: "Delivery & Management",
+        items: ["Project & Program Management (PMP)", "Full-Lifecycle Delivery", "10+ Team Management", "Cross-Functional Alignment"]
+      },
+      {
+        title: "Domain & Technology",
+        items: ["Golden Tax Phase IV & E-Invoice", "Indirect / Direct Tax Systems", "Pillar Two (PL2) Compliance", "RPA & AI Tax Advisory"]
+      }
+    ],
+
+    signatureProject: {
+      tag: "Signature Project",
+      title: "Full Electronic Invoice · 2021 CIFTIS National Award",
+      desc: "Led the product design of the Full Electronic Invoice solution, recognized with the Business Innovation Service Demonstration Case Award at the 2021 China International Fair for Trade in Services (CIFTIS). Produced during tenure at Deloitte China, the product stands as a representative case of national-grade digital tax infrastructure.",
+      meta: "Deloitte China · 2019–2023"
+    },
+
+    clientWall: [
+      "CICC", "Liaoshen Bank", "Sinopharm", "Rolls-Royce China",
+      "CITIC Securities", "Haitong Securities", "Guotai Junan", "CITIC Construction Investment",
+      "East Asia Securities", "Xingye Securities", "Lenovo Finance", "Changhong Electric",
+      "Xingang Group", "Towngas", "Gehua Cable", "Nine-Kun Investment",
+      "China Unicom Group", "Ping An Group", "Ping An Bank", "China Tower",
+      "BOCI Securities"
+    ],
+
+    education: [
+      { title: "Dalian Neusoft University of Information", sub: "B.Eng. in Electronic Engineering" }
+    ],
+
+    certs: [
+      { title: "PMP — Project Management Professional", sub: "PMI" },
+      { title: "ICM Senior Risk & Internal Control Certification", sub: "Internal Control Management" },
+      { title: "Alibaba Cloud Training", sub: "Alibaba Cloud" }
+    ],
+
+    awards: [
+      { title: "CIFTIS Business Innovation Service Demonstration Case Award", sub: "2021 · China International Fair for Trade in Services" },
+      { title: "Outstanding Employee of the Year", sub: "2015 / 2016 / 2017 · Aisino Information" },
+      { title: "FY25/26 Performance Rating — Strong", sub: "Lenovo Group" }
+    ],
+
+    objective: "Seeking senior Project Director / Project Manager roles in Indirect & Direct Tax Information Systems at state-owned enterprises, tax technology providers, or large enterprise tax departments — applying 11 years of Big Four and domestic consulting experience, full-lifecycle delivery of 70+ tax digital transformation projects, PMP certification, and established relationships with SAT authorities and central SOE clients to drive Golden Tax Phase IV, e-invoice, and Pillar Two initiatives.",
+
+    summary: "Senior tax technology and digital transformation leader with 11 years of experience across Big Four consulting firms (Deloitte, EY, PwC), domestic tax service providers, and Lenovo Group. Proven track record of directing 70+ tax system implementations as Project Director / Project Manager, with expertise in managing teams of 10+ members. Deep expertise in Golden Tax Phase IV, e-invoice, indirect and direct tax digitalization, Pillar Two (PL2) compliance, RPA bots, and AI-driven tax advisory. Full-lifecycle delivery experience spanning pre-sales, solution blueprint design, implementation, and post-go-live operations, with established long-term relationships with SAT bureaus (Large Enterprise Tax Bureau, Audit Bureau, Risk Management Division) and central SOE clients. PMP-certified; FY25/26 Performance Rating — Strong.",
+
+    experiences: [
+      {
+        period: "2025 — Present",
+        company: "Lenovo Group (China) · SSG / LPS (Band 8)",
+        meta: "Beijing, China",
+        role: "Indirect Tax Digitalization Project Lead & Delivery Project Director",
+        bullets: [
+          "Lead end-to-end delivery of indirect tax consulting and digital transformation engagements for central SOEs, manufacturing, energy clients, and multinationals across Greater China.",
+          "Drive pre-sales cycles for indirect / direct tax digital solutions — opportunity identification, solution refinement, client demonstrations, and proposal development.",
+          "Oversee implementation of core modules: intelligent tax calculation, AI tax advisory, intelligent risk control, Pillar Two (PL2), finance-tax integration, RPA bots, e-invoice, Lianqi front-end systems, full tax declaration, and risk dashboards.",
+          "Direct cross-functional teams of 5–8+ across the full delivery lifecycle — requirements analysis, blueprint design, BA, development, UAT, deployment, and post-go-live support (including low-code transition and knowledge transfer).",
+          "Partner with SAT authorities (Taxpayer Service Bureau, Large Enterprise Department, Audit Bureau, Risk Management Division, VAT/Commodity Tax, e-Tax) on policy alignment, AI large-model solution design, and Golden Tax Phase IV digital enforcement integration.",
+          "Lead strategic expansion into Pillar Two services for global multinationals and Chinese outbound enterprises, managing full-lifecycle engagements from business development through account maintenance."
+        ]
+      },
+      {
+        period: "2024 — 2025",
+        company: "Zhongshui Tax Consulting Co., Ltd.",
+        meta: "Beijing, China",
+        role: "Director, Indirect Tax Digital Implementation",
+        bullets: [
+          "Directed indirect tax digital transformation programs for large and mid-sized enterprises, covering intelligent tax calculation, AI tax advisory, TRA, RPA bots, e-invoice systems, Lianqi integration, and risk dashboards.",
+          "Led government affairs engagements with SAT's Large Enterprise Tax Bureau and Audit Bureau — risk model development and Golden Tax Phase IV digital enforcement integration."
+        ]
+      },
+      {
+        period: "2023 — 2024",
+        company: "PwC Tax Agents (Shanghai) Co., Ltd.",
+        meta: "Beijing, China",
+        role: "Indirect Tax Digitalization Manager · IT PM & Product Management",
+        bullets: [
+          "Introduced PwC tax technology products to SOEs, manufacturing, energy, and multinational manufacturer clients; led requirements refinement, demos, and technical delivery.",
+          "Directed teams of 5+ across the full delivery lifecycle — requirements gathering, blueprint design, development, UAT, project tracking, cost estimation, and post-go-live operations.",
+          "Owned product management for Golden Tax Phase IV e-invoice and digital tax products, including industry-specific solutions and customized client requirements.",
+          "Led smart risk control and audit indicator module design; produced interpretation documentation for new e-invoice and Lianqi features.",
+          "Designed supplementary e-invoice functionalities and collected customized client requirements across invoice and full-tax modules."
+        ]
+      },
+      {
+        period: "2019 — 2023",
+        company: "Deloitte China (Senior 4)",
+        meta: "Beijing, China",
+        role: "Indirect Tax System Implementation PM / Tax Technology Consultant",
+        bullets: [
+          "Delivered Deloitte tax system implementations end-to-end for non-conflicted clients — requirements analysis, demos, contract (engagement letter) negotiation, technical delivery, and post-go-live support.",
+          "Provided consulting on Golden Tax Phase IV data-driven audit training, full electronic invoice rollout, supporting software/hardware implementation, and enterprise tax IT infrastructure.",
+          "Advised on multi-tax declaration management and individual income tax deduction automation.",
+          "Presented VAT and Corporate Income Tax system modules, mapping client business processes to system capabilities and pain points.",
+          "Led RPA initiatives on UiPath and UIBOT for finance and manufacturing clients, quantifying efficiency gains through process automation."
+        ]
+      },
+      {
+        period: "2018 — 2019",
+        company: "EY (China) Advisory Services (Senior 2)",
+        meta: "Beijing, China",
+        role: "Indirect Tax Digital Project Manager",
+        bullets: [
+          "Delivered indirect tax system implementations for non-conflicted clients — requirements analysis, demos, contract negotiation, deployment, and post-go-live support.",
+          "Designed and delivered tax training programs covering Land Appreciation Tax, Environmental Tax filing, export rebate hotspots, IIT reforms, and customs transfer pricing audits.",
+          "Organized regional training sessions in Beijing, Tianjin, and Shanghai, targeting industry-specific clients to build pipeline and cross-project collaboration."
+        ]
+      },
+      {
+        period: "2015 — 2018",
+        company: "Aisino Information Co., Ltd.",
+        meta: "Beijing, China",
+        role: "Indirect Tax PM / Regional Director / Securities Industry PM",
+        bullets: [
+          "Pre-sales: client on-site solution presentations, bid proposals, monthly market planning, weekly client status reporting; built partnerships with 10+ regional service units and third-party vendors (Yonyou, Jinqiu, Changliang, Daben).",
+          "Delivery: server-side deployment, front-end installation, implementation documentation, test environment setup, UAT, production deployment, go-live, and acceptance.",
+          "Post-go-live: product operations and maintenance, customer issue resolution, and periodic upgrade documentation distribution.",
+          "Product management: operation manuals, product marketing, version release, pricing, KPI ownership, and cross-functional coordination.",
+          "Regional Director: built partnerships across Eastern and Southern China (Guangdong, Shenzhen, Shanghai, Jiangsu, Zhejiang, Shandong, etc.) with Aisino subsidiaries and channel partners (Yonyou, Jinqiu, IBM, Oracle); supported regional bids and KPI allocation across tier-1/tier-2 cities.",
+          "Securities Industry PM: served 20+ securities clients including CITIC Securities, Haitong Securities, Guotai Junan, Shenwan Hongyuan, Xingye Securities, CICC, GF Securities, Minsheng Securities, Everbright Securities, CITIC Construction Investment, Western Securities, and Huatai Securities."
+        ]
+      }
+    ],
+
+    projects: [
+      {
+        name: "Hitachi China (formerly ABB Power Grid)",
+        role: "E-Invoice System — Project Manager",
+        desc: "Delivered E-Invoice system rollout across China, covering outbound invoices, digital e-invoice, Lianqi integration, inbound invoices, and master data. Integrated with SAP for invoice number transmission, implemented OCR and compliance validation for AP invoices, and reduced tax-accounting discrepancies through automated verification and reconciliation."
+      },
+      {
+        name: "Jinzhou Bank",
+        role: "Enterprise Tax System — Project Manager",
+        desc: "Built the enterprise tax system (Phase 1) and replaced legacy VAT inbound/outbound modules (Phase 2). Integrated with core banking systems to enable finance-tax data flow, automated VAT main form and annex table generation, and built an internal tax regulation management system synced with external regulatory databases."
+      },
+      {
+        name: "Haitong Futures HQ",
+        role: "Invoice Management System — Project Manager",
+        desc: "Three-phase program: inbound invoice system (P1), e-invoice upgrade with outbound module (P2) integrating Yonyou NC6.5 for reimbursement-invoice data flow, verification, write-back, and VAT input tax deduction; and custom enhancements including anomaly alerts and export functionality (P3)."
+      },
+      {
+        name: "Everbright Securities HQ",
+        role: "Tax Invoice System — Project Manager",
+        desc: "Implemented enterprise tax invoice system (P1), upgraded inbound e-invoice with automated declaration data for HQ and branches (P2), connecting business and financial systems with third-party interfaces for VAT electronic ledger synchronization and invoice verification; delivered quota management and alert optimization (P3)."
+      }
+    ],
+
+    otherClients: "CICC, Liaoshen Bank, Sinopharm, Rolls-Royce China, CITIC Securities, Haitong Securities, Guotai Junan, CITIC Construction Investment, East Asia Securities, Xingye Securities, Lenovo Finance, Changhong Electric, Xingang Group, Towngas, Gehua Cable, Nine-Kun Investment, China Unicom Group, Ping An Group, Ping An Bank, China Tower, BOCI Securities.",
+
+    achievementStats: [
+      { number: "70+", label: "Tax Digital Projects Led" },
+      { number: "11", label: "Years in Tax Technology" },
+      { number: "6", label: "Big Four / SOE Tenures" }
+    ],
+
+    achievements: [
+      { company: "Lenovo Group LPS", count: "15 projects as primary PM" },
+      { company: "Zhongshui Tax Consulting", count: "6 projects as primary PM" },
+      { company: "PwC", count: "8 projects as primary PM" },
+      { company: "Deloitte China", count: "16 projects as primary PM · Full Electronic Invoice product won 2021 CIFTIS Business Innovation Service Demonstration Case Award" },
+      { company: "EY (China)", count: "6 projects as primary PM" },
+      { company: "Aisino Information", count: "25 projects as primary PM" }
+    ]
+  }
+};
+
+let currentLang = "zh";
+
+function render(lang) {
+  currentLang = lang;
+  const d = DATA[lang];
+  document.documentElement.lang = lang === "zh" ? "zh-CN" : "en";
+
+  document.getElementById("brand-name").textContent = d.brandName;
+  document.getElementById("brand-title").textContent = d.brandTitle;
+  document.getElementById("hero-name-zh").textContent = d.heroNameZh;
+  document.getElementById("hero-name-en").textContent = d.heroNameEn;
+  document.getElementById("hero-title").textContent = d.heroTitle;
+  document.getElementById("hero-subtitle").textContent = d.heroSubtitle;
+  document.getElementById("contact-location").textContent = d.contactLocation;
+  document.getElementById("contact-phone").textContent = d.contactPhone;
+  document.getElementById("contact-email").textContent = d.contactEmail;
+  document.getElementById("footer-text").textContent = d.footerText;
+
+  document.getElementById("title-skills").textContent = d.titleSkills;
+  document.getElementById("title-education").textContent = d.titleEducation;
+  document.getElementById("title-certs").textContent = d.titleCerts;
+  document.getElementById("title-awards").textContent = d.titleAwards;
+  document.getElementById("title-objective").textContent = d.titleObjective;
+  document.getElementById("title-summary").textContent = d.titleSummary;
+  document.getElementById("title-experience").textContent = d.titleExperience;
+  document.getElementById("title-projects").textContent = d.titleProjects;
+  document.getElementById("title-achievements").textContent = d.titleAchievements;
+  document.getElementById("other-clients-title").textContent = d.otherClientsTitle;
+
+  // Hero current role + nav print label
+  document.getElementById("hero-current-role").textContent = d.heroCurrentRole;
+  document.getElementById("nav-print").textContent = d.navPrint;
+
+  // Topbar nav
+  document.getElementById("topbar-nav").innerHTML = d.navItems
+    .map(n => `<a href="#${n.id}" class="topbar-nav-link">${n.label}</a>`).join("");
+
+  // Highlight bar
+  document.getElementById("highlight-bar").innerHTML = d.highlights
+    .map(h => `
+      <div class="highlight-item">
+        <div class="highlight-number">${h.number}</div>
+        <div class="highlight-label">${h.label}</div>
+      </div>
+    `).join("");
+
+  // Signature project
+  document.getElementById("signature-tag").textContent = d.signatureProject.tag;
+  document.getElementById("signature-title").textContent = d.signatureProject.title;
+  document.getElementById("signature-desc").textContent = d.signatureProject.desc;
+  document.getElementById("signature-meta").textContent = d.signatureProject.meta;
+
+  // Skill groups
+  document.getElementById("skill-groups-container").innerHTML = d.skillGroups
+    .map(g => `
+      <div class="skill-group">
+        <div class="skill-group-title">${g.title}</div>
+        <div class="skill-group-items">
+          ${g.items.map(i => `<span class="skill-tag">${i}</span>`).join("")}
+        </div>
+      </div>
+    `).join("");
+
+  // Education
+  document.getElementById("education-container").innerHTML = d.education
+    .map(e => `<div class="info-item"><div class="info-item-title">${e.title}</div><div class="info-item-sub">${e.sub}</div></div>`)
+    .join("");
+
+  // Certs
+  document.getElementById("certs-container").innerHTML = d.certs
+    .map(c => `<div class="info-item"><div class="info-item-title">${c.title}</div><div class="info-item-meta">${c.sub}</div></div>`)
+    .join("");
+
+  // Awards
+  document.getElementById("awards-container").innerHTML = d.awards
+    .map(a => `<div class="info-item"><div class="info-item-title">${a.title}</div><div class="info-item-meta">${a.sub}</div></div>`)
+    .join("");
+
+  // Objective & Summary
+  document.getElementById("objective-content").textContent = d.objective;
+  document.getElementById("summary-content").textContent = d.summary;
+
+  // Experience
+  document.getElementById("experience-container").innerHTML = d.experiences
+    .map(exp => `
+      <div class="experience-item">
+        <div class="experience-period">${exp.period}</div>
+        <div class="experience-company">${exp.company}</div>
+        <div class="experience-meta">${exp.meta}</div>
+        <div class="experience-role">${exp.role}</div>
+        <ul class="experience-bullets">
+          ${exp.bullets.map(b => `<li>${b}</li>`).join("")}
+        </ul>
+      </div>
+    `).join("");
+
+  // Projects
+  document.getElementById("projects-container").innerHTML = d.projects
+    .map(p => `
+      <div class="project-card">
+        <div class="project-name">${p.name}</div>
+        <div class="project-role">${p.role}</div>
+        <div class="project-desc">${p.desc}</div>
+      </div>
+    `).join("");
+
+  // Client list — static, wrapped, large serif
+  document.getElementById("clients-grid").innerHTML = d.clientWall
+    .map(c => `<span class="client-item">${c}</span>`).join("");
+
+  // Achievements
+  document.getElementById("achievement-grid").innerHTML = d.achievementStats
+    .map(a => `
+      <div class="achievement-card">
+        <div class="achievement-number">${a.number}</div>
+        <div class="achievement-label">${a.label}</div>
+      </div>
+    `).join("");
+  document.getElementById("achievement-list").innerHTML = d.achievements
+    .map(a => `<div class="achievement-list-item"><strong>${a.company}</strong> — ${a.count}</div>`)
+    .join("");
+
+  // Lang switch state
+  document.querySelectorAll(".lang-switch button").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
+}
+
+document.querySelectorAll(".lang-switch button").forEach(btn => {
+  btn.addEventListener("click", () => render(btn.dataset.lang));
+});
+
+document.getElementById("print-btn").addEventListener("click", () => window.print());
+
+render("zh");
+</script>
+
+</body>
+</html>
