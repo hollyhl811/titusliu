@@ -305,9 +305,28 @@
 
   /* ============ Clients Section (4-row alternating marquee) ============ */
   .clients-section {
-    margin-top: 16px;
+    margin-top: 0;
     background: var(--bg-secondary);
     border: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .clients-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("assets/hero-tax.webp");
+    background-size: cover;
+    background-position: center;
+    opacity: 0.1;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .clients-section > * {
+    position: relative;
+    z-index: 1;
   }
 
   .clients-label {
@@ -547,23 +566,6 @@
     padding: 90px 40px 70px;
     position: relative;
     overflow: hidden;
-  }
-
-  .hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background-image: url("assets/hero-tax.webp");
-    background-size: cover;
-    background-position: center;
-    opacity: 0.22;
-    z-index: 0;
-    pointer-events: none;
-  }
-
-  .hero > * {
-    position: relative;
-    z-index: 1;
   }
 
   .hero-name {
@@ -1111,14 +1113,12 @@
   </aside>
 
   <main>
-    <section class="signature-project" id="signature">
-      <div class="signature-tag" id="signature-tag">标志性项目</div>
-      <h3 class="signature-title" id="signature-title"></h3>
-      <p class="signature-desc" id="signature-desc"></p>
-      <p class="signature-meta" id="signature-meta"></p>
+    <section class="clients-section" style="margin-bottom: 40px;">
+      <div class="clients-label" id="other-clients-title">服务客户矩阵</div>
+      <div class="clients-marquee" id="clients-grid"></div>
     </section>
 
-    <section id="summary" style="margin-bottom: 40px; margin-top: 40px;">
+    <section id="summary" style="margin-bottom: 40px;">
       <h2 class="section-title-main" id="title-summary">个人简介</h2>
       <div class="summary-card" id="summary-content"></div>
     </section>
@@ -1128,13 +1128,16 @@
       <div id="experience-container"></div>
     </section>
 
+    <section class="signature-project" id="signature" style="margin-bottom: 40px;">
+      <div class="signature-tag" id="signature-tag">标志性项目</div>
+      <h3 class="signature-title" id="signature-title"></h3>
+      <p class="signature-desc" id="signature-desc"></p>
+      <p class="signature-meta" id="signature-meta"></p>
+    </section>
+
     <section id="projects" style="margin-bottom: 40px;">
       <h2 class="section-title-main" id="title-projects">代表项目</h2>
       <div class="projects-grid" id="projects-container"></div>
-      <div class="clients-section">
-        <div class="clients-label" id="other-clients-title">服务客户矩阵</div>
-        <div class="clients-marquee" id="clients-grid"></div>
-      </div>
     </section>
 
     <section id="achievements" style="margin-bottom: 40px;">
