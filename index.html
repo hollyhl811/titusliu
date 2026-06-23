@@ -302,7 +302,7 @@
     gap: 5px;
   }
 
-  /* ============ Clients Section (static, wrapped) ============ */
+  /* ============ Clients Section (4-row alternating marquee) ============ */
   .clients-section {
     margin-top: 16px;
     background: var(--bg-secondary);
@@ -316,18 +316,51 @@
     font-weight: 600;
     color: var(--text-muted);
     text-align: center;
-    padding: 24px 0 0;
+    padding: 24px 0 14px;
   }
 
-  .clients-list {
-    padding: 24px 32px 32px;
+  .clients-marquee {
+    padding: 0 0 28px;
+    overflow: hidden;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-direction: column;
+    gap: 6px;
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+  }
+
+  .clients-row {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  .clients-track {
+    display: flex;
+    flex-shrink: 0;
     align-items: baseline;
-    gap: 14px 0;
-    max-width: 1100px;
-    margin: 0 auto;
+  }
+
+  .clients-row[data-dir="left"] .clients-track {
+    animation: marquee-left var(--marquee-duration, 60s) linear infinite;
+  }
+
+  .clients-row[data-dir="right"] .clients-track {
+    animation: marquee-right var(--marquee-duration, 60s) linear infinite;
+  }
+
+  .clients-marquee:hover .clients-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marquee-left {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+
+  @keyframes marquee-right {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
   }
 
   .client-item {
@@ -340,9 +373,10 @@
     transition: color 0.25s ease;
     white-space: nowrap;
     letter-spacing: 0.01em;
+    flex-shrink: 0;
   }
 
-  .client-item:not(:last-child)::after {
+  .client-item::after {
     content: "·";
     position: absolute;
     right: 0;
@@ -358,17 +392,26 @@
     color: var(--accent);
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .clients-track {
+      animation: none !important;
+    }
+    .clients-row[data-dir="right"] .clients-track {
+      transform: translateX(-50%);
+    }
+  }
+
   @media (max-width: 880px) {
     .client-item {
       font-size: 17px;
       padding: 0 16px;
     }
-    .client-item:not(:last-child)::after {
+    .client-item::after {
       font-size: 17px;
     }
-    .clients-list {
-      padding: 20px 16px 24px;
-      gap: 10px 0;
+    .clients-marquee {
+      padding: 0 0 22px;
+      gap: 4px;
     }
   }
 
@@ -430,12 +473,35 @@
       border-color: #cccccc !important;
       box-shadow: none !important;
     }
+    .clients-marquee {
+      display: block;
+      padding: 8px 0 16px;
+      -webkit-mask-image: none !important;
+      mask-image: none !important;
+    }
+    .clients-row:nth-child(n+2) {
+      display: none;
+    }
+    .clients-row {
+      overflow: visible !important;
+    }
+    .clients-track {
+      animation: none !important;
+      transform: none !important;
+      flex-wrap: wrap;
+      white-space: normal;
+      justify-content: center;
+      gap: 8px 0;
+    }
+    .clients-track .client-item:nth-child(n+22) {
+      display: none;
+    }
     .client-item {
       font-size: 13pt !important;
       color: #222222 !important;
       padding: 0 18px !important;
     }
-    .client-item:not(:last-child)::after {
+    .client-item::after {
       color: #5a4a8c !important;
     }
     .project-card, .achievement-card, .achievement-list-item, .experience-item {
@@ -1043,7 +1109,7 @@
       <div class="projects-grid" id="projects-container"></div>
       <div class="clients-section">
         <div class="clients-label" id="other-clients-title">服务客户矩阵</div>
-        <div class="clients-list" id="clients-grid"></div>
+        <div class="clients-marquee" id="clients-grid"></div>
       </div>
     </section>
 
@@ -1593,9 +1659,26 @@ function render(lang) {
       </div>
     `).join("");
 
-  // Client list — static, wrapped, large serif
-  document.getElementById("clients-grid").innerHTML = d.clientWall
-    .map(c => `<span class="client-item">${c}</span>`).join("");
+  // Client wall — 4-row alternating marquee, each row shifted for visual variety
+  (function () {
+    const wall = d.clientWall;
+    const rows = 4;
+    const durations = [62, 78, 56, 70];
+    const container = document.getElementById("clients-grid");
+    const html = Array.from({ length: rows }, (_, idx) => {
+      const offset = Math.floor((idx * wall.length) / rows);
+      const reordered = [...wall.slice(offset), ...wall.slice(0, offset)];
+      const loop = [...reordered, ...reordered];
+      const items = loop
+        .map(c => `<span class="client-item">${c}</span>`)
+        .join("");
+      const dir = idx % 2 === 0 ? "left" : "right";
+      return `<div class="clients-row" data-dir="${dir}" style="--marquee-duration:${durations[idx]}s">`
+        + `<div class="clients-track">${items}</div>`
+        + `</div>`;
+    }).join("");
+    container.innerHTML = html;
+  })();
 
   // Achievements
   document.getElementById("achievement-grid").innerHTML = d.achievementStats
