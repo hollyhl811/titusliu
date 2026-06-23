@@ -163,7 +163,7 @@
     gap: 10px;
   }
 
-  .print-btn {
+  .download-btn {
     background: transparent;
     border: 1px solid var(--border);
     color: var(--text-secondary);
@@ -179,14 +179,15 @@
     align-items: center;
     gap: 6px;
     transition: var(--transition);
+    text-decoration: none;
   }
 
-  .print-btn:hover {
+  .download-btn:hover {
     border-color: var(--text-primary);
     color: var(--text-primary);
   }
 
-  .print-btn svg {
+  .download-btn svg {
     width: 12px;
     height: 12px;
     stroke: currentColor;
@@ -419,7 +420,7 @@
 
   /* ============ Print ============ */
   @media print {
-    .topbar, .topbar-nav, .print-btn, .lang-switch, .topbar-actions {
+    .topbar, .topbar-nav, .download-btn, .lang-switch, .topbar-actions {
       display: none !important;
     }
     body {
@@ -1026,6 +1027,12 @@
     </div>
     <nav class="topbar-nav" id="topbar-nav"></nav>
     <div class="topbar-actions">
+      <a class="download-btn" id="resume-download" href="assets/Resume_TitusLiu_ZH.docx" download>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span id="nav-download">下载简历</span>
+      </a>
       <div class="lang-switch">
         <button data-lang="zh" class="active">中</button>
         <button data-lang="en">EN</button>
@@ -1152,6 +1159,8 @@ const DATA = {
       { id: "achievements", label: "业绩" }
     ],
     navPrint: "打印 / PDF",
+    navDownload: "下载简历",
+    resumeLink: "assets/Resume_TitusLiu_ZH.docx",
 
     highlights: [
       { number: "70+", label: "主导税务数字化项目" },
@@ -1362,6 +1371,8 @@ const DATA = {
       { id: "achievements", label: "Impact" }
     ],
     navPrint: "Print / PDF",
+    navDownload: "Download Resume",
+    resumeLink: "assets/Resume_TitusLiu_ZH.docx",
 
     highlights: [
       { number: "70+", label: "Tax Digital Projects Led" },
@@ -1582,9 +1593,14 @@ function render(lang) {
   document.getElementById("title-achievements").textContent = d.titleAchievements;
   document.getElementById("other-clients-title").textContent = d.otherClientsTitle;
 
-  // Hero current role + nav print label
+  // Hero current role + nav labels
   document.getElementById("hero-current-role").textContent = d.heroCurrentRole;
-  document.getElementById("nav-print").textContent = d.navPrint;
+  const downloadLink = document.getElementById("resume-download");
+  const downloadLabel = document.getElementById("nav-download");
+  if (downloadLink) {
+    downloadLink.href = d.resumeLink;
+    if (downloadLabel) downloadLabel.textContent = d.navDownload;
+  }
 
   // Topbar nav
   document.getElementById("topbar-nav").innerHTML = d.navItems
